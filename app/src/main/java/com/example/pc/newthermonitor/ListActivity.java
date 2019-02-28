@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.jar.Attributes;
 
 public class ListActivity extends AppCompatActivity {
     ListView ListView;
-    int[] images = {R.drawable.android,R.drawable.iphone,R.drawable.wi ,R.drawable.blackberry,R.drawable.linux};
+    int[] images = {R.drawable.android,R.drawable.iphone,R.drawable.iphone ,R.drawable.blackberry,R.drawable.linux};
     String[] Names = {"android", "iphone", "windows", "blackberry", "linux"};
 //    private FirebaseAuth firebaseAuth;
 
@@ -67,13 +67,13 @@ public class ListActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            View view1 = getLayoutInflater().inflate(R.layout.row, null);
-            TextView textview = (TextView) view1.findViewById(R.id.textView);
-            ImageView imageView = (ImageView) view1.findViewById(R.id.imageView);
+            view = getLayoutInflater().inflate(R.layout.row, null);
+            TextView textview = (TextView) view.findViewById(R.id.textView);
+            ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
             imageView.setImageResource(images[i]);
             textview.setText(Names[i]);
 
-            return view1;
+            return view;
         }
     }
 

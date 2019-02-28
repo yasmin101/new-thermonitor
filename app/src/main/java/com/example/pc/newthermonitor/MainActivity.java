@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null){
             finish();
-            startActivity(new Intent(getApplicationContext(),ListActivity.class));
+            startActivity(new Intent(getApplicationContext(),devicelistActivity.class));
         }
         progressDialog = new ProgressDialog(this);
         buttonSignin = (Button) findViewById(R.id.button);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
               //  progressDialog.dismiss();
                 if(task.isSuccessful()){
                     finish();
-                    startActivity(new Intent(getApplicationContext(),ListActivity.class));
+                    startActivity(new Intent(getApplicationContext(),devicelistActivity.class));
                 }
                 else{
                     Log.i(TAG, "onComplete: ", task.getException());
