@@ -3,8 +3,9 @@ package com.example.pc.newthermonitor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,8 @@ public class DeviceDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_detail);
+      
+
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
@@ -46,27 +49,7 @@ public class DeviceDetailActivity extends AppCompatActivity {
             }
 
             });
-        myRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                DeviceDetailActivity newPost = dataSnapshot.getValue(DeviceDetailActivity.class);
-                System.out.println("Previous Post ID: " + prevChildKey);
-            }
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
-                DeviceDetailActivity changedPost = dataSnapshot.getValue(DeviceDetailActivity.class);
-                System.out.println("The updated post title is: " + changedPost.title);
-            }
 
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                DeviceDetailActivity removedPost = dataSnapshot.getValue(DeviceDetailActivity.class);
-                System.out.println("The blog post titled " + removedPost.title + " has been deleted");
-            }
-
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
 
 
     }
